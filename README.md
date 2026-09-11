@@ -21,6 +21,8 @@ echo Chart::render(Chart::bar()
     ->build());
 ```
 
+Examples from the catalogue: grouped bars and line charts.
+
 <p align="center">
   <img src="docs/images/bar.svg" width="240" alt="Quarterly revenue compared with grouped bars">
   <img src="docs/images/line.svg" width="240" alt="Multiple series displayed as line charts">
@@ -55,9 +57,9 @@ require __DIR__.'/vendor/autoload.php';
 
 $model = Chart::bar()
     ->title('Quarterly revenue')
-    ->description('Revenue by quarter for 2025 and 2026.')
-    ->series('2025', ['Q1' => 18, 'Q2' => 27, 'Q3' => 24, 'Q4' => 35])
-    ->series('2026', ['Q1' => 22, 'Q2' => 31, 'Q3' => 29, 'Q4' => 40])
+    ->description('Revenue by quarter for 2025 and 2026, in millions.')
+    ->series('2025', ['Q1' => 18, 'Q2' => 32, 'Q3' => 24, 'Q4' => 42])
+    ->series('2026', ['Q1' => 26, 'Q2' => 24, 'Q3' => 38, 'Q4' => 35])
     ->build();
 
 echo Chart::render($model);
@@ -111,7 +113,7 @@ See [Getting started](docs/getting-started.md) for saving the result and choosin
       <a href="docs/charts/gauge.md"><img src="docs/images/gauge.svg" width="180" alt="Current release confidence on a zero to one hundred scale"><br>Gauges</a>
     </td>
     <td align="center" width="33%">
-      <a href="docs/charts/sparkline.md"><img src="docs/images/sparkline.svg" width="180" alt="A generally rising nine day series"><br>Sparklines</a>
+      <a href="docs/charts/sparkline.md"><img src="docs/images/sparkline.svg" width="180" alt="Signups generally rising over seven days"><br>Sparklines</a>
     </td>
   </tr>
   <tr>
@@ -156,11 +158,6 @@ echo Chart::render($model, options: new SvgRenderOptions(
 Enable these options when a stylesheet or script needs to address chart elements.
 They also apply to `Chart::renderDocument()` and `SvgRenderer`.
 
-Axis domains depend on the chart family. Bar and area charts include zero; line, scatter,
-and bubble charts fit their domains to the data by default. Set explicit domains when comparing
-separate charts. See [Scales](docs/layout/scales.md) and [Labels](docs/layout/labels.md)
-for value formatting.
-
 ## Error handling
 
 Invalid or incompatible input throws `Atelier\Chart\Exception\InvalidArgumentException`.
@@ -172,6 +169,8 @@ and [numeric precision](docs/getting-started.md#format-displayed-values) when wo
 integers or very small values.
 
 ## Gallery
+
+From a repository checkout with dependencies installed:
 
 ```bash
 php examples/generate.php
@@ -185,6 +184,8 @@ Writes `examples/output/index.html` with examples of the chart families and them
 - [Chart types](docs/charts/): choose a family and explore illustrated variants.
 - [Series](docs/series/overview.md): organize categories, points, and composition data.
 - [Layout](docs/layout/overview.md): control chart dimensions, axes, labels, and legends.
+- [Scales](docs/layout/scales.md): understand default domains and set consistent scales across charts.
+- [Labels](docs/layout/labels.md): format displayed values.
 - [Themes](docs/themes/overview.md): use a preset or define the visual roles.
 
 Read the complete guides and generated illustrations in [docs/](docs/).
